@@ -17,7 +17,7 @@ public class Brick : MonoBehaviour {
 		++this.timesHit;
 		
 		if(this.timesHit == this.maxHits) {
-			GameObject.Destroy (this.gameObject);
+			Destroy(gameObject);
 		}
 		
 	}
