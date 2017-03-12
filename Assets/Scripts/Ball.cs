@@ -12,21 +12,27 @@ public class Ball : MonoBehaviour {
 	void Start () {
 		paddle = GameObject.FindObjectOfType<Paddle>();
 		ballInPlay = false;
-		paddleToBallVector = this.transform.position - paddle.transform.position;
+		paddleToBallVector = this.transform.position - paddle.transform.position;		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
-		if(!ballInPlay) {
+		if (!ballInPlay) {
 			// Hold the ball on the paddle
 			this.transform.position = paddle.transform.position + paddleToBallVector;
 			
 			// If mouse button is clicked, start the game
-			if(Input.GetMouseButtonDown(0)) {
+			if (Input.GetMouseButtonDown(0)) {
 				ballInPlay = true;
 				this.rigidbody2D.velocity = new Vector2(2f, 10f);
 			}
+		}
+	}
+	
+	void OnCollisionEnter2D(Collision2D collision) {
+		if (ballInPlay) {
+			audio.Play();
 		}
 	}
 }
