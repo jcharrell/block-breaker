@@ -31,7 +31,7 @@ public class Ball : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision) {
-		if (ballInPlay) {
+		if (ballInPlay && collision.gameObject.tag != "breakable") {
 			audio.Play();
 		}
 	}
