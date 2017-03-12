@@ -31,8 +31,15 @@ public class Ball : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision) {
-		if (ballInPlay && collision.gameObject.tag != "breakable") {
-			audio.Play();
+		Vector2 tweak = new Vector2(Random.Range (0f, 0.2f), Random.Range (0f, 0.2f));
+	
+		if(ballInPlay) {
+			this.rigidbody2D.velocity += tweak;
+			
+			if (collision.gameObject.tag != "breakable") {
+				audio.Play();
+			}
 		}
+		
 	}
 }
