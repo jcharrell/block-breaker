@@ -50,6 +50,8 @@ public class Brick : MonoBehaviour {
 		// If a sprite is not defined at the index, do not attempt to use it
 		if(hitSprites[spriteIndex]) {
 			this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		} else {
+			Debug.LogError ("Brick sprite missing");
 		}
 	}
 }
