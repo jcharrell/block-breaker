@@ -6,6 +6,7 @@ public class Brick : MonoBehaviour {
 	public Sprite[] hitSprites;
 	public static int breakableCount = 0;
 	public AudioClip crack;
+	public GameObject smoke;
 	
 	private bool isBreakable;
 	private int maxHits;
@@ -37,6 +38,7 @@ public class Brick : MonoBehaviour {
 		
 		if(this.timesHit >= maxHits) {
 			breakableCount--;
+			Instantiate(smoke, gameObject.transform.position, Quaternion.identity);
 			Destroy(gameObject);
 			levelManager.CheckWinCondition();
 		} else {
