@@ -37,14 +37,22 @@ public class Brick : MonoBehaviour {
 		++this.timesHit;
 		
 		if(this.timesHit >= maxHits) {
-			breakableCount--;
-			Instantiate(smoke, gameObject.transform.position, Quaternion.identity);
-			Destroy(gameObject);
+			RemoveBrick();
+			DisplaySmoke();			
 			levelManager.CheckWinCondition();
 		} else {
 			LoadSprites();
 		}
 	}
+	
+	void RemoveBrick() {
+		breakableCount--;
+		Destroy(gameObject);
+	}
+	void DisplaySmoke() {
+		GameObject particle = Instantiate(smoke, transform.position, Quaternion.identity) as GameObject;
+		particle.particleSystem.startColor = gameObject.GetComponent<SpriteRenderer>().color;
+	} 
 	
 	void LoadSprites() {
 		int spriteIndex = timesHit - 1;
