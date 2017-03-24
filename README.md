@@ -1,4 +1,4 @@
-# block-breaker
+# unity-arkanoid-clone
 
 
 Simple PoC Unity project
